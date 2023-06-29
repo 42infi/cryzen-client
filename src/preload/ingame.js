@@ -19,4 +19,3 @@ try {
 } catch (e) {
     console.error("an error occurred while loading userscripts: " + e);
 }
-
