@@ -1,6 +1,6 @@
 {
   "name": "cryzen-client",
-  "productName": "cryzen client",
+  "productName": "Cryzen Client",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
