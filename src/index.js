@@ -67,10 +67,6 @@ const createWindow = () => {
 
     win.loadURL('https://cryzen.io/');
 
-    win.webContents.on('new-window', (e, url) => {
-        e.preventDefault();
-        win.loadURL(url);
-    });
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
