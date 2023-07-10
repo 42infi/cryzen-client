@@ -45,12 +45,17 @@ const createWindow = () => {
 
     win.removeMenu();
 
+    win.webContents.userAgent = win.webContents.userAgent.replace(" CryzenClient/1.0.1", "").replace("Electron", "Brave")
+
     if (settings.get('fullScreen') === undefined) settings.set('fullScreen', true);
 
     win.setFullScreen(settings.get('fullScreen'));
 
     shortcuts.register(win, "Escape", () => win.webContents.executeJavaScript('document.exitPointerLock()', true));
-    shortcuts.register(win, "F4", () => win.loadURL('https://cryzen.io/'));
+    shortcuts.register(win, "F4", () => {
+        console.log("load")
+        win.loadURL('https://cryzen.io/')
+    });
     shortcuts.register(win, "F5", () => win.reload());
     shortcuts.register(win, "F6", () => win.loadURL(clipboard.readText()));
     shortcuts.register(win, 'F11', () => {
@@ -70,6 +75,10 @@ const createWindow = () => {
 
     win.on('page-title-updated', (e) => {
         e.preventDefault();
+    });
+
+    win.on("close", () => {
+        process.exit(0);
     });
 
 }
